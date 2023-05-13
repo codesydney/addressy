@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <H1>
+      Addressy
+    </H1>
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->    
+    <script src="" async defer></script>
+
+    <select id="country">
+      <option value="au">Australia</option>
+    </select>
+    
+    <input type="text" id="rapidAddress" size="40" placeholder="Type in address here" />
+    <div id="error"></div><br/>
+    
+    
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <!-- You also can use a "current" version (e.g: harmony-current.min.js) instead of a specific version -->
+    <script src="https://common.mastersoftgroup.com/scripts/harmony-1.8.0.min.js" type="text/javascript"></script>
+    <script src="https://common.mastersoftgroup.com/scripts/harmony-ui-1.8.0.min.js" type="text/javascript"></script>
+    
+    <script>
+      $(function() {
+        // Use the environment based on the site it is on
+        Harmony.useEnv("https://hosted.mastersoftgroup.com");
+    
+        // Init the client with the demo api user name and credential
+        // We have created the following user and credential which you can use on mylocal
+        Harmony.init({{user|safe}},{{password|safe}}, Harmony.AUSTRALIA);
+        
+        //exposeattributes
+        Harmony.useFeatureOptions({"exposeAttributes":1, "groupAddresses":0});
+        Harmony.useProtocol(Harmony.CORS);
+             
+        var opt = {
+          // min 3 chars to trigger the lookup
+          minLength:3, 
+          // enable getGeocode for non ANZ countries when address selected.
+          getIntlGeocode:true,
+          
+          // override onSelect function if applicable (optional)
+          onSelect: function(event, ui) {
+             //console.log('address selected: ' + JSON.stringify(ui));
+          },
+        
+          // override onGeocode function if applicable (optional)
+          onIntlGeocode: function(event, ui) {
+            // console.log('geocode address selected: ' + JSON.stringify(ui.onIntlGeocodeItem));
+          },
+        
+          // override onRetrieve function if applicable (optional)
+          onRetrieve: function(event, ui) {
+            //console.log('onRetrieve geocode address selected: ' + JSON.stringify(ui.onRetrieveItem));
+            document.getElementById("loqateResponse").innerHTML = JSON.stringify(ui.onRetrieveItem,null,'\t');            
+            var element = document.getElementById(element.id);
+            console.log(element.textContent);            
+          }
+        };
+       
+        // Configure the address lookup. 
+        // "#rapidAddress" is referring to the input address element id
+        Harmony.UI.addressLookupV2($("#rapidAddress"), $("#country"), "GNAF", opt);
+    
+      });
+    </script>    
+
+    <form action="{{ url_for('show_insights') }}" method="post">
+
+      <p>Address details : <span id="loqateResponse"></span></p>
+      <label for="name">Name:</label><br>
+      <input type="text" name='name'><br>     
+      <input type="submit" value="Submit">
+
+    </form>
+
+  </body>  
+</html>
