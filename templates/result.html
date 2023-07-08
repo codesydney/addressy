@@ -39,7 +39,11 @@
     <script src="https://common.mastersoftgroup.com/scripts/harmony-1.8.0.min.js" type="text/javascript"></script>
     <script src="https://common.mastersoftgroup.com/scripts/harmony-ui-1.8.0.min.js" type="text/javascript"></script>
    
-    <p style="color: #1b5d89">
+    <form action="{{ url_for('home')}}" method="post">
+      <input type="submit"  value="Home">
+    </form>
+
+    <p style="color: #3a4a55">
       {{ chosen_address }}
     </p>
 

@@ -91,16 +91,15 @@
     </script>    
 
     <form action="{{ url_for('home')}}" method="post">
-      <!-- <p><span id="loqateResponse"></span></p>
-      <input type="text" name="question" size="100" placeholder="Type in your question here" /> -->
-      <input type="submit">
+      <input type="submit"  value="Home">
     </form>
 
+    <br>  
+
     <div id="container">
-      <input type="text" id="chosenadd" />
+      <input type="hidden" id="chosenadd" />
       <button id="get_button">Get insights</button>
     </div>
-
 
   </body>  
 </html>
