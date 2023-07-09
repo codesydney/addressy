@@ -43,8 +43,12 @@
     </form>
 
     <h2>Address: {{ fullAddress }}</h2>
-          
-    </p>
+    <h3>
+      NSW Public Schools near the chosen address
+    </h3>
+    {% for item in return_values %}
+      <p>{{ item }}</p>
+    {% endfor %}
 
   </body>  
 </html>
