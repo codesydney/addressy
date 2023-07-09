@@ -11,45 +11,28 @@ app.loqate_password = "\""  + os.getenv('LOQATE_PASSWORD') + "\""
 def index():
     return render_template('index.html',user=app.loqate_user,password=app.loqate_password)
 
-@app.route('/home',methods=['POST'])
+@app.route('/home',methods=['GET', 'POST'])
 def home():
     return render_template('index.html',user=app.loqate_user,password=app.loqate_password)
 
-@app.route('/process/<chosen_address>')
-def process(chosen_address):
-    print('chosen_address', chosen_address)
+@app.route('/process', methods=['GET', 'POST'])
+def process():
+    if (request.method == "POST"):
+        fullAddress = str(request.json['fullAddress'])
+        postcode = str(request.json['postcode'])
 
-    data = json.loads(chosen_address)
-    fullAddress = data["fullAddress"]
-    print('fullAddress', fullAddress)
+        db_dir = ('/Users/engramarbollas/Projects/addressy/nswgovschools.db')
+        conn = sqlite3.connect(db_dir)
+        print ("Opened database successfully")
 
-    postcode = data["postcode"]
-    print('postcode', postcode)
-
-    db_dir = ('/Users/engramarbollas/Projects/addressy/nswgovschools.db')
-    conn = sqlite3.connect(db_dir)
-    print ("XXX Opened database successfully")
-
-    details_cur = conn.execute(
-        'select School_name, Town_suburb, Postcode from NSW_govt_schools_master_dataset where Postcode = ? COLLATE NOCASE', [postcode])
-    
-    details = details_cur.fetchall()
-    print('details------>', details)
-
-    return_values = []
-
-    print ('before return_values---------> ',return_values);
-
-    for detail in details:
-        detail_dict = {}
-        detail_dict['School_name'] = detail['School_name']
-        detail_dict['Town_suburb'] = detail['Town_suburb']
-        detail_dict['postcode'] = detail['postcode']
-        return_values.append(detail_dict)
+        details_cur = conn.execute(
+            'select School_name, Town_suburb, Postcode from NSW_govt_schools_master_dataset where Postcode = ? COLLATE NOCASE', [postcode])
         
-    print ('after return_values---------> ',return_values);
+        details = details_cur.fetchall()
+        print('details------>', details)
+
     return render_template("result.html", 
-                        fullAddress = fullAddress, return_values=return_values)
+                            fullAddress = fullAddress, details = details)
 
 # 404 error handler
 @app.errorhandler(404)
@@ -60,3 +43,6 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('errors/500.html'), 500
+
+if __name__ == '__main__':
+    app.run(host="127.0.0.1", port=5000, debug=True)

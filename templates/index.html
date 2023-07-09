@@ -68,18 +68,17 @@
           },
         
           // override onRetrieve function if applicable (optional)
-          onRetrieve: function(event, ui) {
-            console.log('onRetrieve geocode address selected: ' + JSON.stringify(ui.onRetrieveItem));
-
-            $(document).ready(function(){
-                $("#get_button").on("click",function(){
-                    //var chosen_address = $("#chosenadd").val(JSON.stringify(ui.onRetrieveItem));
-                    var chosen_address = JSON.stringify(ui.onRetrieveItem);
-                    window.location.href = '/process/'+chosen_address;                           
+          onRetrieve: function(event, ui) {            
+            $(document).ready(function () {
+                chosen_address = JSON.stringify(ui.onRetrieveItem);
+                $.ajax({
+                    type: 'POST',
+                    url:  "{{ url_for( 'process' ) }}",
+                    data: JSON.stringify(ui.onRetrieveItem),
+                    contentType: "application/json",
+                    success:function(response){ document.write(response); }       
                 })
             })
-            
-          
           }
         };
        

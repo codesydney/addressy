@@ -46,8 +46,10 @@
     <h3>
       NSW Public Schools near the chosen address
     </h3>
-    {% for item in return_values %}
-      <p>{{ item }}</p>
+    {% for detail in details %}
+      <tr>
+        <td>{{ detail }}</td>
+      </tr>
     {% endfor %}
 
   </body>  
