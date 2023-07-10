@@ -23,13 +23,19 @@ def process():
 
         db_dir = ('/Users/engramarbollas/Projects/addressy/nswgovschools.db')
         conn = sqlite3.connect(db_dir)
-        print ("Opened database successfully")
 
         details_cur = conn.execute(
             'select School_name, Town_suburb, Postcode from NSW_govt_schools_master_dataset where Postcode = ? COLLATE NOCASE', [postcode])
         
         details = details_cur.fetchall()
-        print('details------>', details)
+        conn.close()
+
+        # conn = sqlite3.connect(db_dir)
+        # details_cur = conn.execute(
+        #      'select Name, Address, Suburb, Postcode, Phone, ED from NSW_Health_Services = ? where Postcode = ? COLLATE NOCASE', [postcode])
+        
+        #health_details = details_cur.fetchall()
+        # conn.close()
 
     return render_template("result.html", 
                             fullAddress = fullAddress, details = details)
