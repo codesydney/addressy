@@ -42,10 +42,14 @@
       <input type="submit"  value="Home">
     </form>
 
-    <h2>Address: {{ fullAddress }}</h2>
-    <h3>
-      NSW Public Schools near the chosen address
-    </h3>
+    <h3>Address: {{ fullAddress }}</h3>
+    <p>
+      <b>
+          NSW Public Schools
+      </b>
+      <br>
+      Data Contributed by <a href="https://www.linkedin.com/in/soundarya-venkatesan/ target="_blank">Soundarya Venkatesan</a>
+    </p>
     {% for detail in details %}
       <tr>
         <td>{{ detail }}</td>
