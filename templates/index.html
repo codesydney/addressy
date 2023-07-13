@@ -10,25 +10,22 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../static/style.css">
   </head>
   <body>
-    <h1>Addressy</h1>
-    <h2>Community Contributed Australian Address Scores</h1>
-    <h3>Address Lookup Service is powered by <a href="https://www.loqate.com/anz/", target="_blank">Loqate by GBG</a></h3>      
+    <div class = 'index-align'>
+      <h1>Addressy</h1>
+      <h2>Community Contributed Australian Address Scores</h2>
+      <h3>Address Lookup Service is powered by <a href="https://www.loqate.com/anz/", target="_blank">Loqate by GBG</a></h3>      
 
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->    
-    <script src="" async defer></script>
-
-    <select id="country">
-      <option value="au">Australia</option>
-    </select>
-    
-    <input type="text" id="rapidAddress" size="40" placeholder="Type in address here" />
-    <div id="error"></div><br/>
-    
+      <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->    
+      <script src="" async defer></script>
+      
+      <input type="text" class ='curved-input' id="rapidAddress" size="40" placeholder="Search your address here" />
+      <div id="error"></div><br/>
+    </div>
     
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -89,15 +86,15 @@
 
     </script>    
 
-    <form action="{{ url_for('home')}}" method="post">
-      <input type="submit"  value="Home">
+    <form action="{{ url_for('home')}}" method="post" class = 'index-align'>
+      <input type="submit"  value="Home" class = "search-button">
     </form>
 
     <br>  
 
-    <div id="container">
+    <div id="container" class = 'index-align'>
       <input type="hidden" id="chosenadd" />
-      <button id="get_button">Get insights</button>
+      <button id="get_button" class = "button search-button">Get insights</button>
     </div>
 
   </body>  

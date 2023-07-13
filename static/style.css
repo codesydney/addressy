@@ -51,3 +51,30 @@ footer {
   background-color: #cce5ff;
   border-color: #b8daff;
 }
+.index-align{
+    text-align: center;
+}
+.curved-input{
+    border-radius: 10px;
+    font-size: 15px;
+    background-image: url('search-icon.png');
+    background-position: 5px 7px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    width: 400px; 
+    height: 30px;
+    opacity: 0.4
+}
+.search-button{
+    border: none;
+    font-size: 15px;
+    padding: 12px 15px;
+    text-align: center;
+    margin: 3px 0.5px;
+    transition-duration: 0.4s;
+    background-color: grey;
+    color: white;
+}
+.search-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
