@@ -15,6 +15,10 @@ Link to Google Drive : [Put your cleansed data here](https://drive.google.com/dr
 [nsw.data.gov.au](https://data.nsw.gov.au/) <br/>
 [abs.gov.au](https://www.abs.gov.au/) <br/>
 
+### Project Status Board
+
+[Kanban Board](https://github.com/orgs/codesydney/projects/12) <br/>
+
 ### Discord Server
 
 [Code.Sydney's Discord Server](https://discord.gg/yHNKkvMN5e) <br/>
