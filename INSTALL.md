@@ -50,4 +50,4 @@
     python3 app.py
     ```
 
-You can access the app at http://localhost:5000
+You can access the app at <http://localhost:5000>
