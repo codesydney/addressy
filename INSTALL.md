@@ -37,11 +37,11 @@
     source venv/bin/activate
     ```
 
-2. Set the environment variables
+2. Set the environment variables, you can store the values in a file called `.env` in the root of the project. e.g.
 
     ```bash
-    export LOQATE_USER=XXXXXX
-    export LOQATE_PASSWORD=XXXXX
+    LOQATE_USER=XXXXXX
+    LOQATE_PASSWORD=XXXXX
     ```
 
 3. Run the app
