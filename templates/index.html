@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../static/style.css">
   </head>
   <body>
-    <div class = 'index-align'>
+
       <h1>Addressy</h1>
       <h2>Community Contributed Australian Address Scores</h2>
       <h3>Address Lookup Service is powered by <a href="https://www.loqate.com/anz/", target="_blank">Loqate by GBG</a></h3>      
@@ -22,10 +22,13 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->    
       <script src="" async defer></script>
-      
+
+      <select id="country" hidden>
+        <option value="au"></option>
+      </select>
+
       <input type="text" class ='curved-input' id="rapidAddress" size="40" placeholder="Search your address here" />
       <div id="error"></div><br/>
-    </div>
     
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -86,13 +89,13 @@
 
     </script>    
 
-    <form action="{{ url_for('home')}}" method="post" class = 'index-align'>
+    <form action="{{ url_for('home')}}" method="post">
       <input type="submit"  value="Home" class = "search-button">
     </form>
 
     <br>  
 
-    <div id="container" class = 'index-align'>
+    <div id="container">
       <input type="hidden" id="chosenadd" />
       <button id="get_button" class = "button search-button">Get insights</button>
     </div>

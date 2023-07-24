@@ -4,6 +4,7 @@ import sqlite3
 import os.path
 
 app = Flask(__name__)
+
 app.loqate_user = "\"" + os.getenv('LOQATE_USER') + "\"" 
 app.loqate_password = "\""  + os.getenv('LOQATE_PASSWORD') + "\"" 
 
