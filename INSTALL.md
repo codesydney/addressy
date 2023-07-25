@@ -40,8 +40,8 @@
 2. Set the environment variables, you can store the values in a file called `.env` in the root of the project. e.g.
 
     ```bash
-    LOQATE_USER=XXXXXX
-    LOQATE_PASSWORD=XXXXX
+    ADDRESSY_LOQATE_USER=XXXXXX
+    ADDRESSY_LOQATE_PASSWORD=XXXXX
     ```
 
 3. Run the app
